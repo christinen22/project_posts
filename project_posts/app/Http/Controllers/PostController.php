@@ -20,6 +20,19 @@ class PostController extends Controller
         ]);
     }
 
+        /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Post  $Post
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,28 +54,19 @@ class PostController extends Controller
         $formFields = $request->validate([
             'title' => 'required',
             'user' => 'required',
+            'email' => ['required', 'email'],
             'description' => 'required',
-            'github' => 'required'
+            'github' => 'required',
+            'tags' => 'required'
 
         ]);
 
         Post::create($formFields);
 
-        return redirect('/');
+        return redirect('/')->with('message', 'Post created successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Post  $modelsPost
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $modelsPost)
-    {
-        return view('posts.show', [
-            'post' => $post
-        ]);
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -90,7 +94,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $modelsPost
+     * @param  \App\Models\Post  $Post
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $Post)

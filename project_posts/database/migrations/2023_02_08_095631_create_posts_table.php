@@ -16,11 +16,12 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('title');
-            $table->string('user');
-            $table->string('email');
-            $table->string('tags');
-            $table->string('description');
+            $table->string('title')->nullable();
+            $table->string('user')->nullable();
+            $table->string('email')->nullable();
+            $table->string('github')->nullable();
+            $table->string('tags')->nullable();
+            $table->string('description')->nullable();
 
         });
     }
