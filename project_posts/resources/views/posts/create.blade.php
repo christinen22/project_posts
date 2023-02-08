@@ -8,7 +8,7 @@
             <p class="mb-4">Post your project and/or share your thoughts</p>
     </header>
 
-        <form method="POST" action="/posts">
+        <form method="POST" action="/posts" enctype="multipart/form-data">
             @csrf
             <div class="mb-6 mx-auto">
                 <label
@@ -18,7 +18,8 @@
                 </label>
                 <input type="text"
                         class="border border-gray-200 rounded p-2 w-full"
-                        name="user"/>
+                        name="user"
+                        value="{{ old('user') }}"/>
 
                         @error('user')
                             <p class="text-red-500 text-xs mt-1">{{ $message }} </p>
@@ -32,7 +33,8 @@
                     <input
                         type="text"
                         class="border border-gray-200 rounded p-2 w-full"
-                        name="title"/>
+                        name="title"
+                        value="{{ old('title') }}"/>
 
                         @error('title')
                             <p class="text-red-500 text-xs mt-1">{{ $message }} </p>
@@ -46,7 +48,8 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="email"/>
+                    name="email"
+                    value="{{ old('email') }}"/>
 
                     @error('email')
                             <p class="text-red-500 text-xs mt-1">{{ $message }} </p>
@@ -62,7 +65,8 @@
                 <input
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
-                    name="github"/>
+                    name="github"
+                    value="{{ old('github') }}"/>
 
                     @error('github')
                             <p class="text-red-500 text-xs mt-1">{{ $message }} </p>
@@ -77,14 +81,15 @@
                     type="text"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="tags"
-                    placeholder="Example: Laravel, Backend, Frontend, etc"/>
+                    placeholder="Example: Laravel, Backend, Frontend, etc"
+                    value="{{ old('tags') }}"/>
 
                     @error('tags')
                             <p class="text-red-500 text-xs mt-1">{{ $message }} </p>
                         @enderror
             </div>
 
-          <!--  <div class="mb-6">
+            <div class="mb-6">
                 <label for="image" class="inline-block text-lg mb-2">
                     Image
                 </label>
@@ -92,7 +97,11 @@
                     type="file"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="image"/>
-            </div> -->
+
+                    @error('image')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }} </p>
+                    @enderror
+            </div>
 
             <div class="mb-6">
                 <label
@@ -104,6 +113,7 @@
                     class="border border-gray-200 rounded p-2 w-full"
                     name="description"
                     rows="10">
+                    {{ old('description') }}
                 </textarea>
 
                 @error('description')

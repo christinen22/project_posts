@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title')->nullable();
+            $table->string('image')->nullable();
             $table->string('user')->nullable();
             $table->string('email')->nullable();
             $table->string('github')->nullable();

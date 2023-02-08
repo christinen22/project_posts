@@ -5,7 +5,7 @@
     <div class="flex mb-8">
         <img
             class="hidden w-48 mr-6 md:block"
-            src="{{ asset('/images/no-image.png') }}"
+            src="{{$post->image ? asset('storage/' . $post->image) : asset('/images/no-image.png')}}"
             alt="no image"/>
     <div>
         <h3 class="text-2xl">
