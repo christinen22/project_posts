@@ -10,11 +10,11 @@
         <p class="text-2xl text-gray-200 font-bold my-4">
             My projects and thoughts about them
         </p>
-                <!-- <div>
-                     <a  href="register.html"
-                        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black">
-                        Sign Up To Post
-                    </a>
-                </div>!-->
+    <div>
+        <a  href="register.html"
+        class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black">
+            Sign Up To Post
+        </a>
+    </div>
     </div>
 </section>
