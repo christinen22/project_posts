@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('user');
             $table->string('email');
+            $table->string('tags');
             $table->string('description');
 
         });
