@@ -11,7 +11,7 @@
         <div class="flex flex-col items-center justify-center text-center">
             <img
                 class="w-48 mr-6 mb-6"
-                src="{{asset('/images/no-image.png')}}"
+                src="{{ $post->image ? asset('/storage' . $post->logo) : asset('/images/no-image.png') }}"
                 alt=""/>
                     <h3 class="text-2xl mb-2">{{$post->title}}</h3>
         <div class="text-xl font-bold mb-4">{{$post->user}}</div>
@@ -21,31 +21,16 @@
             Project description
         </h3>
         <div class="text-lg space-y-6">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur
-                adipisicing elit. Eligendi non reprehenderit
-                facilis architecto autem quam
-                necessitatibus, odit quod, repellendus
-                voluptate cum. Necessitatibus a id tenetur.
-                Error numquam at modi quaerat.
-            </p>
-            <p>
-                Lorem, ipsum dolor sit amet consectetur
-                adipisicing elit. Quaerat praesentium eos
-                consequuntur ex voluptatum necessitatibus
-                odio quos cupiditate iste similique rem in,
-                voluptates quod maxime animi veritatis illum
-                quo sapiente.
-            </p>
+            {{ $post->description }}
 
             <a
-                href="mailto:test@test.com"
+                href="mailto:{{ $post->email }}"
                 class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80">
                 <i class="fa-solid fa-envelope"></i>
                     Contact</a>
 
             <a
-                href="https://test.com"
+                href="{{ $post->github }}"
                 target="_blank"
                 class="block bg-black text-white py-2 rounded-xl hover:opacity-80">
                 <i class="fa-solid fa-globe"></i>View on Github
