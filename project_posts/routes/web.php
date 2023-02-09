@@ -32,5 +32,8 @@ Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 //Update edited post
 Route::put('/posts/{post}', [PostController::class, 'update']);
 
+//Delete post
+Route::delete('/posts/{post}', [PostController::class, 'destroy']);
+
 // Single Listing
 Route::get('/posts/{post}', [PostController::class, 'show']);
