@@ -27,7 +27,10 @@ Route::get('/posts/create', [PostController::class, 'create']);
 Route::post('/posts', [PostController::class, 'store']);
 
 //Show Edit Form
-Route::post('/posts')
+Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
 
-//Single Post
+//Update edited post
+Route::put('/posts/{post}', [PostController::class, 'update']);
+
+// Single Listing
 Route::get('/posts/{post}', [PostController::class, 'show']);

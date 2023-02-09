@@ -78,9 +78,9 @@ class PostController extends Controller
      * @param  \App\Models\Post  $Post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $Post)
+    public function edit(Post $post)
     {
-        //
+        return view('posts.edit', ['post' => $post]);
     }
 
     /**
@@ -90,9 +90,25 @@ class PostController extends Controller
      * @param  \App\Models\Post  $Post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $Post)
+    public function update(Request $request, Post $post)
     {
-        //
+        $formFields = $request->validate([
+            'title' => 'required',
+            'user' => 'required',
+            'email' => ['required', 'email'],
+            'description' => 'required',
+            'github' => 'required',
+            'tags' => 'required'
+
+        ]);
+
+        if($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('images', 'public');
+        }
+
+        Post::create($formFields);
+
+        return redirect('/')->with('message', 'Post updated successfully!');
     }
 
     /**
