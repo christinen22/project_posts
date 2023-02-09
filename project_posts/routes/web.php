@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Post;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +38,6 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy']);
 
 // Single Listing
 Route::get('/posts/{post}', [PostController::class, 'show']);
+
+//Show Register/Create Form
+Route::get('/register', [UserController::class, 'create']);
