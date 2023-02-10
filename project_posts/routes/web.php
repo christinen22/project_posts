@@ -22,34 +22,34 @@ Route::get('/', [PostController::class, 'index']);
 
 
 //Show Create Form
-Route::get('/posts/create', [PostController::class, 'create']);
+Route::get('/posts/create', [PostController::class, 'create'])->middleware('auth');
 
 //Store Post Data
-Route::post('/posts', [PostController::class, 'store']);
+Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
 
 //Show Edit Form
-Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->middleware('auth');
 
 //Update edited post
-Route::put('/posts/{post}', [PostController::class, 'update']);
+Route::put('/posts/{post}', [PostController::class, 'update'])->middleware('auth');
 
 //Delete post
-Route::delete('/posts/{post}', [PostController::class, 'destroy']);
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->middleware('auth');
 
 // Single Listing
 Route::get('/posts/{post}', [PostController::class, 'show']);
 
 //Show Register/Create Form
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 //Create New User
 Route::post('/users', [UserController::class, 'store']);
 
 //Log User Out
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 //Show Login form
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');  //give the route a name because of the middleware Authentication. For the guest middleware, change route (default /home) in Provider, RouteServiceProvider
 
 //Login User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
